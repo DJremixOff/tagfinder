@@ -1,0 +1,34 @@
+<html lang="fr">
+	<head>
+		<title>TagFinder</title>
+		<meta charset="utf-8">
+		<meta name="description" content="Trouver tout les tags de vos chansons préférés en quelques seconde !">
+		<meta property="og:title" content="TagFinder - Vos tags en quelques secondes !">
+		<meta property="og:description" content="Trouver tout les tags de vos chansons préférés en quelques seconde !">
+		<meta name="twitter:title" content="TagFinder - Vos tags en quelques secondes !">
+		<link rel="icon" href="LogoTopBar.png" type="image/png">
+		<link rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="AutotagScript.js"></script>
+
+	</head>
+
+	<body>
+
+		<form onsubmit ="getTrack()" action="#" id="search" hidden="false" >
+			<img src="Logo.png" id="logoImage"><br>
+			<input id="searchBox" type="text" placeholder="Trouver une musique aves son titre, son artiste, son album..." required><br>
+			<input type="submit" value="Rechercher" id="searchButton">
+		</form>	
+
+		<div id="result">
+			<img src="notFound.png" id="albumImageBack">
+			<img src="notFound.png" id="albumImage">
+			<h4 id="titleText">Aucun titre</h4>
+			<p id="artistAlbumText">Aucun artiste - Aucun album</p>
+			<p id="genreText">Aucun genre</p>
+
+			<button id="retry" onclick="goSearch()">Rechercher a nouveau</button><br>
+			<a id="incorrectText" onclick="googleSearch()" target="_blank">Résultat incorrect ?</a>
+		</div>
+	</body>
+</html>
