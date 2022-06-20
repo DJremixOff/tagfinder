@@ -4,7 +4,7 @@ function getTrack() {
 		goResult()	
 
 		var MusicMatchRequest = new XMLHttpRequest();		
-    	MusicMatchRequest.open("GET", "http://api.musixmatch.com/ws/1.1/track.search?apikey=4d0eb8f566fd333097753e286a0bd62f&page=1&page_size=1&s_track_rating=desc&s_artist_rating=desc&q_track_artist="+search, false)
+    	MusicMatchRequest.open("GET", "https://api.musixmatch.com/ws/1.1/track.search?apikey=4d0eb8f566fd333097753e286a0bd62f&page=1&page_size=1&s_track_rating=desc&s_artist_rating=desc&q_track_artist="+search, false)
 		MusicMatchRequest.send();
 		if (MusicMatchRequest.status == 200) {
         	const result = JSON.parse(MusicMatchRequest.responseText);
@@ -17,7 +17,7 @@ function getTrack() {
         		coverSearch = coverSearch.slice(0, index) 
         	}
 
-        	LastFMCover.open("GET", "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=891eb812dff8c61e75185ea9659af611&artist="+ result.message.body.track_list[0].track.artist_name +"&album=" + coverSearch+ "&format=json", false)
+        	LastFMCover.open("GET", "https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=891eb812dff8c61e75185ea9659af611&artist="+ result.message.body.track_list[0].track.artist_name +"&album=" + coverSearch+ "&format=json", false)
         	LastFMCover.send();
 			const cover = JSON.parse(LastFMCover.responseText);
 
