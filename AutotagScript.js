@@ -1,13 +1,16 @@
+var result
+
 function getTrack() {
+	event.preventDefault();
 	var search = document.getElementById("searchBox").value;
 	if (search != null){
 		goResult()	
 
 		var MusicMatchRequest = new XMLHttpRequest();		
-    	MusicMatchRequest.open("GET", "https://api.musixmatch.com/ws/1.1/track.search?apikey=4d0eb8f566fd333097753e286a0bd62f&page=1&page_size=1&s_track_rating=desc&s_artist_rating=desc&q_track_artist="+search, false)
+    	MusicMatchRequest.open("GET", "http://api.musixmatch.com/ws/1.1/track.search?apikey=4d0eb8f566fd333097753e286a0bd62f&page=1&page_size=1&s_track_rating=desc&s_artist_rating=desc&q_track_artist="+search, false)
 		MusicMatchRequest.send();
 		if (MusicMatchRequest.status == 200) {
-        	const result = JSON.parse(MusicMatchRequest.responseText);
+        	var result = JSON.parse(MusicMatchRequest.responseText);
 
         	var LastFMCover = new XMLHttpRequest();
         	var coverSearch =  result.message.body.track_list[0].track.album_name
@@ -17,7 +20,7 @@ function getTrack() {
         		coverSearch = coverSearch.slice(0, index) 
         	}
 
-        	LastFMCover.open("GET", "https://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=891eb812dff8c61e75185ea9659af611&artist="+ result.message.body.track_list[0].track.artist_name +"&album=" + coverSearch+ "&format=json", false)
+        	LastFMCover.open("GET", "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=891eb812dff8c61e75185ea9659af611&artist="+ result.message.body.track_list[0].track.artist_name +"&album=" + coverSearch+ "&format=json", false)
         	LastFMCover.send();
 			const cover = JSON.parse(LastFMCover.responseText);
 
@@ -30,11 +33,12 @@ function getTrack() {
         		document.getElementById("albumText").innerHTML = coverSearch//result.message.body.track_list[0].track.album_name;
         	}
 
-        	if (LastFMCover.cover.album.image[3]['#text'] == null) {
-        		document.getElementById("albumImageBack").src = "notFound.png"
-        		document.getElementById("albumImage").src = "notFound.png"
+        	var coverartURL = cover.album.image[3]['#text']
+        	if (coverartURL == null || LastFMCover.status != 200) {
+        		document.getElementById("albumImageBack").src = "asset/notFound.png"
+        		document.getElementById("albumImage").src = "asset/notFound.png"
         	} else {
-        		var coverartURL = cover.album.image[3]['#text']
+        		
         		document.getElementById("albumImageBack").src = coverartURL.replace('300x300', '1200x1200')
         		document.getElementById("albumImage").src = coverartURL.replace('300x300', '1200x1200')
         	}

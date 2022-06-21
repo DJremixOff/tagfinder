@@ -14,15 +14,20 @@
 
 	<body>
 
-		<form onsubmit ="getTrack()" action="#" id="search" hidden="false" >
-			<img src="Logo.png" id="logoImage"><br>
-			<input id="searchBox" type="text" placeholder="Trouver une musique aves son titre, son artiste, son album..." required><br>
-			<input type="submit" value="Rechercher" id="searchButton">
+		<form onsubmit ="getTrack()" id="search" >
+			<img src="asset/backgroundSearch.png" id="backgroundSearch">
+			<img src="asset/Logo.png" id="logoImage"><br>
+			<input id="searchBox" type="text" placeholder="Trouver une musique aves son titre, son artiste..." required><br>
+			<input type="submit" value="Rechercher" id="searchButton"><br>
+			<div id="infoLinkDiv">
+				<a href="about/about.html" id="infoLink">À Propos</a>
+				<a href="https://google.com" id="infoLink">Paramètres</a>
+			</div>
 		</form>	
 
 		<div id="result">
-			<img src="notFound.png" id="albumImageBack">
-			<img src="notFound.png" id="albumImage">
+			<img src="asset/notFound.png" id="albumImageBack">
+			<img src="asset/notFound.png" id="albumImage">
 			<h4 id="titleText">Aucun titre</h4>
 			<p id="artistAlbumText">Aucun artiste - Aucun album</p>
 			<p id="genreText">Aucun genre</p>

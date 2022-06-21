@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
+
+@keyframes Appear {
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
+
+@keyframes title1Appear{
+	from{
+		opacity: 0;
+		top: 13%;
+	}
+	to{
+		opacity: 1;
+		top: 15%;
+
+	}
+}
+
+@keyframes title2Appear{
+	from{
+		opacity: 0;
+		top: 57%;
+	}
+	to{
+		opacity: 1;
+		top: 60%;
+	}
+}
+
+body {
+	background-color: #050517;
+	color: #F8FFF5;
+	overflow-x: hidden;
+	display:block;
+	text-align: center;
+	margin: 0px;
+}
+
+#logoImage {
+	width: 150px;
+	margin-top: 10px;
+}
+#stickyTopBar {
+	position: fixed;
+	width: 100%;
+	filter: drop-shadow(0px 0px 10px black);
+	z-index: 1;
+}
+#frontPicture {
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	margin: 0px;
+	position: absolute;
+	display: flex;
+	object-fit: cover;
+	animation: 2s Appear Ease-in;
+}
+
+#title1 {
+	font-family: 'Nunito';
+	font-weight: 500;
+	font-size: 75;
+	opacity: 0;
+	position: absolute;
+	top: 15%;
+	width: 100%;
+	text-align: center;
+	animation: 0.5s title1Appear Ease-out;
+	animation-delay: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+#title2 {
+	font-family: 'Nunito';
+	font-weight: 700;
+	font-size: 75;
+	position: absolute;
+	top: 60%;
+	width: 100%;
+	text-align: center;
+	opacity: 0;
+	animation: 0.3s title2Appear Ease-out;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
+}
+
+#second {
+	width: 100%;
+	height: 99%;
+	position: absolute;
+	top: 100%;
+	border: solid;
+}
